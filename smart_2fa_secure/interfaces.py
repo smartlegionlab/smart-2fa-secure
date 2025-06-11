@@ -7,25 +7,23 @@
 # https://github.com/smartlegionlab/
 # --------------------------------------------------------
 from abc import ABC, abstractmethod
-import requests
 
 
 class CodeSender(ABC):
     @abstractmethod
-    def send_code(self, recipient: str, code: str, title: str = 'Code:') -> bool:
+    def send_code(self, recipient: str, message: str) -> bool:
         pass
 
 
-class TelegramSender(CodeSender):
-    def __init__(self, token: str):
-        self.token = token
+class AttemptsManager(ABC):
+    @abstractmethod
+    def get_attempts_left(self, user_id: str) -> int:
+        pass
 
-    def send_code(self, chat_id: str, code: str, title: str = 'Code:') -> bool:
-        url = f"https://api.telegram.org/bot{self.token}/sendMessage"
-        message = f"{title}\n\n{code}"
-        try:
-            response = requests.post(url, json={"chat_id": chat_id, "text": message})
-            return response.json().get("ok", False)
-        except Exception as e:
-            print(e)
-            return False
+    @abstractmethod
+    def decrement_attempts(self, user_id: str) -> int:
+        pass
+
+    @abstractmethod
+    def reset_attempts(self, user_id: str) -> None:
+        pass

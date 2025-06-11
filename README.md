@@ -28,7 +28,7 @@ Advanced Two-Factor Authentication system with enhanced security features.
 
 - 🔐 **Complex Code Generation**: 
   - Supports ASCII letters, digits and special characters
-  - Customizable code length (default: 6, configurable up to 64)
+  - Customizable code length (default: 6)
   
 - ⏱ **Flexible Expiration**:
   - Adjustable TTL (Time-To-Live) for codes
@@ -36,7 +36,6 @@ Advanced Two-Factor Authentication system with enhanced security features.
 
 - 📱 **Secure Delivery**:
   - Telegram integration with customizable message templates
-  - Support for special characters in codes
 
 ## Installation
 
@@ -49,62 +48,43 @@ pip install smart-2fa-secure
 ### Generating Complex Codes
 
 ```python
-from smart_2fa_secure import Redis2FABackend
-
-backend = Redis2FABackend()
-# Generate 10-character code with special characters
-code = backend.generate_code("user1", length=10, ttl=120)
-```
-
-### Customizing Telegram Messages
-
-```python
-from smart_2fa_secure import TelegramSender
-
-sender = TelegramSender("YOUR_BOT_TOKEN")
-# Send code with custom title
-sender.send_code("chat123", "A1b2@#", title="Your Secure Code")
-```
-
-### Complete Example
-
-```python
-from smart_2fa_secure import TwoFactorAuth, Redis2FABackend, TelegramSender
+from smart_2fa_secure import Smart2FA
 from smart_2fa_secure.exceptions import InvalidCodeError
 
-# Initialize with enhanced security
-backend = Redis2FABackend(host="secure.redis.server", port=6379)
-sender = TelegramSender(token="YOUR_BOT_TOKEN")
-auth = TwoFactorAuth(sender, backend)
-
-# Generate and send secure code
-code = auth.send_code(
-    user_id="user123",
-    recipient="telegram_chat_id",
-    title="Your Verification Code"
+smart_2fa = Smart2FA(
+  redis_host="localhost",
+  redis_port=6379,
+  telegram_token="YOUR_BOT_TOKEN",
+  code_ttl=60,
+  max_attempts=3,
+  code_length=6,
 )
+code = smart_2fa.send_code(user_id="user1", recipient="1234567", message="Your code:")
 
 # Verify with complex code
 try:
-    auth.verify_code("user123", "A1b2@#")
+    smart_2fa.verify_code("user123", "A1b2@#")
     print("Authentication successful!")
 except InvalidCodeError:
     print("Invalid security code!")
+
 ```
 
-## Security Best Practices
+## 💻 Information for developers:
 
-1. **Use long codes** (minimum 8 characters) for sensitive operations
-2. **Include special characters** in generated codes
-3. **Set short TTL** (30-60 seconds) for time-sensitive operations
-4. **Rotate Telegram bot tokens** regularly
+- `pip install pytest`
+- `pip install pytest-cov`
+- `pip install setuptools`
+- `pip install wheel`
+- `pip install build`
+- `pip install twine`
 
-## Testing Security Features
+- `pytest tests/ -v`
+- `pytest tests/ -v --cov=smart_2fa_secure --cov-report=html`
+- `python -m build` or `python setup.py sdist bdist_wheel`
+- `twine upload dist/*`
 
-```bash
-pytest tests/ --cov=smart_2fa_secure --cov-report=html
-open htmlcov/index.html
-```
+![LOGO](https://github.com/smartlegionlab/smart_2fa_secure/raw/master/data/images/cov.png)
 
 ---
 

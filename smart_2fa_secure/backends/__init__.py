@@ -6,10 +6,10 @@
 # --------------------------------------------------------
 # https://github.com/smartlegionlab/
 # --------------------------------------------------------
-from .redis import Redis2FABackend
+from .redis import RedisBackend
 from .telegram import TelegramSender
 
 __all__ = [
-    'Redis2FABackend',
+    'RedisBackend',
     'TelegramSender',
 ]

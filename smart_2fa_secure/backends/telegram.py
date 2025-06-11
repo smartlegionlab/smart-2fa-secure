@@ -6,4 +6,23 @@
 # --------------------------------------------------------
 # https://github.com/smartlegionlab/
 # --------------------------------------------------------
-from ..interfaces import TelegramSender
+import requests
+
+class TelegramSender:
+    def __init__(self, token: str):
+        self.token = token
+        self.base_url = f"https://api.telegram.org/bot{self.token}"
+
+    def send_message(self, chat_id: str, message: str = "") -> bool:
+        try:
+            url = f"{self.base_url}/sendMessage"
+            payload = {
+                "chat_id": chat_id,
+                "text": f"{message}",
+                "parse_mode": "HTML"
+            }
+            response = requests.post(url, json=payload)
+            return response.json().get("ok", False)
+        except Exception as e:
+            print(e)
+            return False
