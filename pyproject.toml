@@ -25,3 +25,6 @@ Documentation = "https://github.com/smartlegionlab/smart-2fa-secure#readme"
 
 [tool.setuptools.dynamic]
 version = { attr = "smart_2fa.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["smart_2fa_secure"]
