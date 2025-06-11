@@ -7,17 +7,21 @@
 # https://github.com/smartlegionlab/
 # --------------------------------------------------------
 
+
 class Smart2FAError(Exception):
     """Basic 2FA Error"""
     pass
+
 
 class InvalidCodeError(Smart2FAError):
     """Invalid code"""
     pass
 
+
 class TooManyAttemptsError(Smart2FAError):
     """Number of attempts exceeded"""
     pass
+
 
 class CodeExpiredError(Smart2FAError):
     """The code is out of date"""
