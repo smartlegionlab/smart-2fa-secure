@@ -45,8 +45,6 @@ pip install smart-2fa-secure
 
 ## Advanced Usage
 
-### Generating Complex Codes
-
 ```python
 from smart_2fa_secure import Smart2FA
 from smart_2fa_secure.exceptions import InvalidCodeError
@@ -84,7 +82,10 @@ except InvalidCodeError:
 - `python -m build` or `python setup.py sdist bdist_wheel`
 - `twine upload dist/*`
 
-![LOGO](https://github.com/smartlegionlab/smart_2fa_secure/raw/master/data/images/cov.png)
+
+---
+
+![LOGO](https://github.com/smartlegionlab/smart-2fa-secure/raw/master/data/images/cov.png)
 
 ---
 
