@@ -11,4 +11,4 @@ from .backends.redis import Redis2FABackend
 from .interfaces import TelegramSender
 
 __all__ = ["TwoFactorAuth", "Redis2FABackend", "TelegramSender"]
-__version__ = "0.1.1"
+__version__ = "0.1.2"

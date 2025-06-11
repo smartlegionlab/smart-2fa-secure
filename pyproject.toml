@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "smart-2fa-secure"
-version = "0.1.1"
+version = "0.1.2"
 description = "Advanced Two-Factor Authentication system with enhanced security features."
 authors = [{ name = "A.A. Suvorov", email = "smartlegiondev@gmail.com" }]
 readme = "README.md"

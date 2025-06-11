@@ -17,7 +17,7 @@ class Redis2FABackend:
         self.r = redis.Redis(host=host, port=port, db=db)
 
     def generate_code(self, user_id: str, ttl: int = 60, length=6) -> str:
-        characters = string.ascii_letters + string.digits + string.punctuation
+        characters = string.ascii_letters + string.digits + '!@#$%&^_'
         code = ''.join(secrets.choice(characters) for _ in range(length))
         self.r.setex(f"2fa:{user_id}", ttl, code)
         return code
