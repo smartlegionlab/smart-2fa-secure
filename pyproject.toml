@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "smart-2fa-secure"
+version = "0.1.1"
+description = "Advanced Two-Factor Authentication system with enhanced security features."
+authors = [{ name = "A.A. Suvorov", email = "smartlegiondev@gmail.com" }]
+readme = "README.md"
+requires-python = ">=3.8"
+license = "BSD-3-Clause"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "redis~=6.2.0",
+    "requests~=2.32.4"
+]
+
+[project.urls]
+Homepage = "https://github.com/smartlegionlab/smart-2fa-secure"
+Documentation = "https://github.com/smartlegionlab/smart-2fa-secure#readme"
+
+[tool.setuptools.dynamic]
+version = { attr = "smart_2fa.__version__" }
