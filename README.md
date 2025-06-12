@@ -1,12 +1,10 @@
-# Smart 2FA Security System
+# Smart 2FA Security System <sup>v0.2.2</sup>
+
 ---
 
 Advanced Two-Factor Authentication system with enhanced security features.
 
 ---
-
-
-# Smart 2FA Security System
 
 [![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-BSD--3--Clause-blue)]()
