@@ -1,4 +1,4 @@
-# Smart 2FA Security System <sup>v0.2.2</sup>
+# Smart 2FA Security System <sup>v0.2.3</sup>
 
 ---
 
